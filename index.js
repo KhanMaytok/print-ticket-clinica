@@ -84,44 +84,11 @@ app.post('/', (req, res) => {
         printer.println(`MÉDICO:         ${body.buy_date}`);
         printer.println(`HORA AGENDADA:  ${body.buy_date}`);
 
-
-        printer.println(printLines());
-        if (body.enterprise_client_id !== "0") {
-            printer.println(`RAZÓN SOCIAL: ${body.enterprise_client}`);
-            printer.println(`RUC         : ${body.enterprise_client_id}`);
-        }
-        printer.println(`DOC PASAJERO: ${body.dni}`);
-        printer.println(`PASAJERO    : ${body.passenger_name}`);
-        printer.println(printLines());
-        printer.alignCenter();
-        printer.bold(true);
-        printer.println(`DATOS DEL VIAJE`);
-        printer.bold(false);
-        printer.println(printLines());
-        printer.alignLeft();
-        //printer.setTextDoubleHeight();                      // Set text to double height
-        printer.setTextDoubleWidth();
-        printer.println(`ORIGEN     : ${body.departure}`);
-        printer.println(`DESTINO    : ${body.arrival}`);
-        printer.println(`FECHA VIAJE: ${body.departure_date}`);
-        printer.println(`HORA VIAJE : ${body.schedule_hour}`);
-        printer.println(`EMBARQUE   : ${body.departure_hour}`);
-        printer.println(`ASIENTO    : ${body.seat}`);
-        printer.println(`IMPORTE    : S/ ${body.total}`);
-        printer.setTextNormal();
-
-        printer.println(printLines());
-        printer.alignCenter();
+        printer.println(printLines()); //----------------------------------
+        
         printer.println(`SON: ${body.total_letter}`);
         printer.alignLeft();
 
-        printer.println(printLines()); //----------------------------------
-        printer.bold(true);
-        printer.println(`FORMA DE PAGO: ${body.payment_type}`);
-        printer.bold(false);
-        printer.println(printLines()); //----------------------------------
-
-        printer.alignCenter();
         //printer.printQR(`${body.ticket_id}`)
 
         if (client_data.client_data.print_bottom === true) {
