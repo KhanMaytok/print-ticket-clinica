@@ -66,29 +66,25 @@ app.post('/', (req, res) => {
         printer.println(" ")
         printer.alignCenter();
         printer.bold(true)
-        printer.println(`${body.enterprise_name}`);
+        printer.println("CLÍNICA TOTAL MEDIC");
         printer.bold(false)
-        printer.println(`${body.enterprise_address}`)
-        printer.println(`PUNTO DE EMISIÓN: ${body.seller_agency}`)
-        printer.println(`R.U.C. ${body.enterprise_ruc}`);
+        printer.println("ANTISUYO 1385 - LA VICTORIA - CHICLAYO")
+        printer.println("R.U.C. 20605502823");
         printer.println(printLines());
-
-        let invoice_type = "BOLETA ELECTRÓNICA"
-        if (body.enterprise_client_id !== "0") {
-            invoice_type = "FACTURA ELECTRÓNICA";
-        }
-        if (body.is_vale === true) {
-            invoice_type = "VALE";
-        }
-
-        printer.println(`${invoice_type}`);
-        printer.setTextDoubleHeight();
-        printer.setTextDoubleWidth();
-        printer.println(`${body.serie}-${body.number}`);
+        printer.println(printLines()); //----------------------------------
+        printer.println(`TICKET DE ATENCIÓN`);
+        printer.println(printLines()); //----------------------------------
         printer.setTextNormal();
         printer.alignLeft();
         printer.println(`FECHA EMISION: ${body.buy_date}`);
-        printer.println(`ATENDIDO POR : ${body.seller}`);
+
+        printer.println(`DNI:            ${body.buy_date}`);
+        printer.println(`NOMBRES:        ${body.buy_date}`);
+        printer.println(`ESPECIALIDAD:   ${body.buy_date}`);
+        printer.println(`MÉDICO:         ${body.buy_date}`);
+        printer.println(`HORA AGENDADA:  ${body.buy_date}`);
+
+
         printer.println(printLines());
         if (body.enterprise_client_id !== "0") {
             printer.println(`RAZÓN SOCIAL: ${body.enterprise_client}`);
