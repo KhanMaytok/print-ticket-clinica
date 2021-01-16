@@ -7,8 +7,8 @@ git remote add origin https://github.com/KhanMaytok/print-ticket.git
 git add --all
 git commit -m "juajua"
 git fetch --all
-git reset --hard origin/node12
-git pull origin node12
+git reset --hard origin/master
+git pull origin master
 call npm install -g nodemon
 call npm install
 call npm install printer --msvs_version=2017  --build-from-source
