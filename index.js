@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }))
 app.use(cors())
-const jsonParser = bodyParser.json()
+app.use(bodyParser.json())
 console.log(`La actual impresora por defecto es ${m_printer.getDefaultPrinterName()}`)
 const default_printer = m_printer.getDefaultPrinterName();
 
@@ -56,6 +56,7 @@ function printLines() {
 }
 
 app.post('/', (req, res) => {
+    console.log('imprimiendo requiest');
     console.log(req.body);
     let body = req.body;
     if (typeof (body) === "string") {
@@ -76,13 +77,13 @@ app.post('/', (req, res) => {
         printer.println(printLines()); //----------------------------------
         printer.setTextNormal();
         printer.alignLeft();
-        printer.println(`FECHA EMISION: ${body.buy_date}`);
+        printer.println(`FECHA EMISION: ${body.created_at}`);
 
-        printer.println(`DNI:            ${body.buy_date}`);
-        printer.println(`NOMBRES:        ${body.buy_date}`);
-        printer.println(`ESPECIALIDAD:   ${body.buy_date}`);
-        printer.println(`MÉDICO:         ${body.buy_date}`);
-        printer.println(`HORA AGENDADA:  ${body.buy_date}`);
+        printer.println(`DNI:            ${body.dni}`);
+        printer.println(`NOMBRES:        ${body.person}`);
+        printer.println(`ESPECIALIDAD:   ${body.specialty}`);
+        printer.println(`MÉDICO:         ${body.doctor}`);
+        printer.println(`HORA AGENDADA:  ${body.hour_of_service}`);
 
         printer.println(printLines()); //----------------------------------
         
