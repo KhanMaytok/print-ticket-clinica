@@ -87,7 +87,7 @@ app.post('/', (req, res) => {
 
         printer.println(printLines()); //----------------------------------
         
-        printer.println(`SON: ${body.total_letter}`);
+        printer.println(`SON: ${numeroALetras(body.price)}`);
         printer.alignLeft();
 
         //printer.printQR(`${body.ticket_id}`)
