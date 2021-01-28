@@ -109,6 +109,65 @@ app.post('/', (req, res) => {
 
 })
 
+app.post('/laboratory/', (req, res) => {
+    console.log('imprimiendo requiest');
+    console.log(req.body);
+    let body = req.body;
+    if (typeof (body) === "string") {
+        body = JSON.parse(body);
+    }
+    printer.printImage(logo).then(function (done) {
+        printer.println(" ")
+        printer.println(" ")
+        printer.alignCenter();
+        printer.bold(true)
+        printer.println("CLÍNICA TOTAL MEDIC");
+        printer.bold(false)
+        printer.println("ANTISUYO 1385 - LA VICTORIA - CHICLAYO")
+        printer.println("R.U.C. 20605502823");
+        printer.println(printLines());
+        printer.println(printLines()); //----------------------------------
+        printer.println(`TICKET DE ATENCIÓN`);
+        printer.println(printLines()); //----------------------------------
+        printer.setTextNormal();
+        printer.alignLeft();
+        printer.println(`FECHA EMISION: ${body.created_at}`);
+
+        printer.println(`DNI:            ${body.dni}`);
+        printer.println(`NOMBRES:        ${body.person}`);
+        printer.println(`ESPECIALIDAD:   ${body.specialty}`);
+        printer.println(`PROFESIONAL:    ${body.doctor}`);
+        
+        printer.println(printLines()); //----------------------------------
+
+        body.analyses_list.forEach(el =>{
+            printer.println(`${el.name} - S/ ${el.price.toFixed(2)}`);
+        })
+
+        printer.println(printLines()); //----------------------------------
+        
+        printer.println(`SON: ${numeroALetras(body.price)}`);
+        printer.alignLeft();
+
+        //printer.printQR(`${body.ticket_id}`)
+
+        if (client_data.client_data.print_bottom === true) {
+            printer.println(client_data.client_data.bottom_text)
+        }
+        printer.partialCut();
+        printer.execute(function (err) {
+            if (err) {
+                console.error(`Print failed`, err);
+            } else {
+                console.log(`Print done`);
+            }
+        });
+        printer.clear();
+        res.send('<h1>UNO SAN</h1>')
+    });
+
+})
+
 app.post('/credit-note', (req, res) => {
     console.log(req.body);
     let body = req.body;
