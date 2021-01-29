@@ -142,7 +142,7 @@ app.post('/laboratory/', (req, res) => {
 
         body.analyses_list.forEach(el =>{
             printer.println(`NOMBRE: ${el.name}`);
-            printer.println(`PRECIO: ${el.price.toFixed(2)}`);
+            printer.println(`PRECIO: S/ ${el.price.toFixed(2)}`);
         })
 
         printer.println(printLines()); //----------------------------------
