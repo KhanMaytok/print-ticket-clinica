@@ -140,7 +140,7 @@ app.post('/laboratory/', (req, res) => {
         
         printer.println(printLines()); //----------------------------------
 
-        body.analyses_list.forEach(el =>{
+        body.analysis_details.forEach(el =>{
             printer.println(`NOMBRE: ${el.name}`);
             printer.println(`PRECIO: S/ ${el.price.toFixed(2)}`);
         })
