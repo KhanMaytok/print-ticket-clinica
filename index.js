@@ -67,7 +67,7 @@ app.post('/', (req, res) => {
         printer.println(" ")
         printer.alignCenter();
         printer.bold(true)
-        printer.println("CLÍNICA TOTAL MEDIC");
+        printer.println("TOTAL MEDIC");
         printer.bold(false)
         printer.println("ANTISUYO 1385 - LA VICTORIA - CHICLAYO")
         printer.println("R.U.C. 20605502823");
@@ -121,7 +121,7 @@ app.post('/laboratory/', (req, res) => {
         printer.println(" ")
         printer.alignCenter();
         printer.bold(true)
-        printer.println("CLÍNICA TOTAL MEDIC");
+        printer.println("TOTAL MEDIC");
         printer.bold(false)
         printer.println("ANTISUYO 1385 - LA VICTORIA - CHICLAYO")
         printer.println("R.U.C. 20605502823");
