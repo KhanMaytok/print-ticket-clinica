@@ -86,7 +86,8 @@ app.post('/', (req, res) => {
         printer.println(`HORA AGENDADA:  ${body.hour_of_service}`);
 
         printer.println(printLines()); //----------------------------------
-        
+
+        printer.println(`SON: S/ ${body.price}`);
         printer.println(`SON: ${numeroALetras(body.price)}`);
         printer.alignLeft();
 
@@ -147,6 +148,7 @@ app.post('/laboratory/', (req, res) => {
 
         printer.println(printLines()); //----------------------------------
         
+        printer.println(`SON: S/ ${body.price}`);
         printer.println(`SON: ${numeroALetras(body.price)}`);
         printer.alignLeft();
 
