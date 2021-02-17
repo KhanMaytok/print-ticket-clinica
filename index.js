@@ -110,6 +110,58 @@ app.post('/', (req, res) => {
 
 })
 
+app.post('/panaderia', (req, res) => {
+    console.log('imprimiendo request');
+    console.log(req.body);
+    let body = req.body;
+    if (typeof (body) === "string") {
+        body = JSON.parse(body);
+    }
+    printer.printImage(logo).then(function (done) {
+        printer.println(" ")
+        printer.println(" ")
+        printer.alignCenter();
+        printer.bold(true)
+        printer.println("PANADERÍA Y PASTELERÍA SANTA CATALINA");
+        printer.bold(false)
+        printer.println("DIRECCIÓN EXACTA")
+        printer.println("R.U.C.");
+        printer.println(printLines());
+        printer.println(printLines()); //----------------------------------
+        printer.println(`TICKET DE ATENCIÓN`);
+        printer.println(printLines()); //----------------------------------
+        printer.setTextNormal();
+        printer.alignLeft();
+        printer.println(`FECHA EMISION: ${body.created_at}`);
+        printer.println(`CLIENTE:        ${body.customer_name}`);
+        printer.println(printLines()); //----------------------------------
+        body.details.forEach(el =>{
+            printer.println(`${el.quantity} - ${el.product}`);
+        })
+
+        printer.println(`SON: S/ ${body.total}`);
+        printer.println(`SON: ${numeroALetras(body.total)}`);
+        printer.alignLeft();
+
+        //printer.printQR(`${body.ticket_id}`)
+
+        if (client_data.client_data.print_bottom === true) {
+            printer.println(client_data.client_data.bottom_text)
+        }
+        printer.partialCut();
+        printer.execute(function (err) {
+            if (err) {
+                console.error(`Print failed`, err);
+            } else {
+                console.log(`Print done`);
+            }
+        });
+        printer.clear();
+        res.send('<h1>UNO SAN</h1>')
+    });
+
+})
+
 app.post('/laboratory/', (req, res) => {
     console.log('imprimiendo requiest');
     console.log(req.body);
