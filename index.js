@@ -162,6 +162,61 @@ app.post('/panaderia', (req, res) => {
 
 })
 
+
+app.post('/orthoray', (req, res) => {
+    console.log('imprimiendo request');
+    console.log(req.body);
+    let body = req.body;
+    if (typeof (body) === "string") {
+        body = JSON.parse(body);
+    }
+    let document_type = body.serie.startsWith('B') ? 'BOLETA ELECTRÓNICA': 'FACTURA ELECTRÓNICA'
+    printer.printImage(logo).then(function (done) {
+        printer.println(" ")
+        printer.println(" ")
+        printer.alignCenter();
+        printer.bold(true)
+        printer.println("ORTHORAY S.A.C.");
+        printer.bold(false)
+        printer.println("CAL.ALFONSO UGARTE NRO. 599")
+        printer.println("LAMBAYEQUE - CHICLAYO - CHICLAYO");
+        printer.println(printLines());
+        printer.println(printLines()); //----------------------------------
+        printer.println(document_type);
+        printer.println(`${body.serie}-${body.number}`);
+        printer.println(printLines()); //----------------------------------
+        printer.setTextNormal();
+        printer.alignLeft();
+        printer.println(`FECHA EMISION: ${body.created_at}`);
+        printer.println(`CLIENTE:        ${body.customer_name}`);
+        printer.println(printLines()); //----------------------------------
+        body.details.forEach(el =>{
+            printer.println(`${el.quantity} - ${el.product}`);
+        })
+
+        printer.println(`SON: S/ ${body.total}`);
+        printer.println(`SON: ${numeroALetras(body.total)}`);
+        printer.alignLeft();
+
+        //printer.printQR(`${body.ticket_id}`)
+
+        if (client_data.client_data.print_bottom === true) {
+            printer.println(client_data.client_data.bottom_text)
+        }
+        printer.partialCut();
+        printer.execute(function (err) {
+            if (err) {
+                console.error(`Print failed`, err);
+            } else {
+                console.log(`Print done`);
+            }
+        });
+        printer.clear();
+        res.send('<h1>UNO SAN</h1>')
+    });
+
+})
+
 app.post('/laboratory/', (req, res) => {
     console.log('imprimiendo requiest');
     console.log(req.body);
