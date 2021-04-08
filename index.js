@@ -177,6 +177,8 @@ app.post('/orthoray/', (req, res) => {
         printer.alignCenter();
         printer.bold(true)
         printer.println("ORTHORAY S.A.C.");
+        printer.println("RUC: 20479797901");
+        printer.println("Telef: (074) 232280");
         printer.bold(false)
         printer.println("CAL.ALFONSO UGARTE NRO. 599")
         printer.println("LAMBAYEQUE - CHICLAYO - CHICLAYO");
