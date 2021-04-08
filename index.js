@@ -163,7 +163,7 @@ app.post('/panaderia', (req, res) => {
 })
 
 
-app.post('/orthoray', (req, res) => {
+app.post('/orthoray/', (req, res) => {
     console.log('imprimiendo request');
     console.log(req.body);
     let body = req.body;
