@@ -190,6 +190,7 @@ app.post('/orthoray/', (req, res) => {
         printer.println(`FECHA EMISION     : ${body.created_at}`);
         printer.println(`CLIENTE           :        ${body.patient_name}`);
         printer.println(`FECHA DE ATENCIÓN :        ${body.hour_of_service}`);
+        printer.println(`SERVICIO          :        ${body.product_name}`);
         printer.println(printLines()); //----------------------------------
 
         printer.println(`SON: S/ ${body.total}`);
