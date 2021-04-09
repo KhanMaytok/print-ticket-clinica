@@ -170,7 +170,8 @@ app.post('/orthoray/', (req, res) => {
     if (typeof (body) === "string") {
         body = JSON.parse(body);
     }
-    let document_type = body.serie.startsWith('B') ? 'BOLETA ELECTRÓNICA': 'FACTURA ELECTRÓNICA'
+    let document_type = body.serie.startsWith('B') ? 'BOLETA ELECTRÓNICA': 'FACTURA ELECTRÓNICA';
+    let customer_document_name = body.serie.startsWith('B') ? 'DNI': 'RUC';
     printer.printImage(logo).then(function (done) {
         printer.println(" ")
         printer.println(" ")
@@ -190,10 +191,14 @@ app.post('/orthoray/', (req, res) => {
         printer.setTextNormal();
         printer.alignLeft();
         printer.println(`FECHA EMISION     : ${body.created_at}`);
-        printer.println(`CLIENTE           :        ${body.patient_name}`);
-        printer.println(`FECHA DE ATENCIÓN :        ${body.hour_of_service}`);
-        printer.println(`SERVICIO          :        ${body.product_name}`);
+        printer.println(`CLIENTE - DNI/RUC : ${body.customer.full_name}`);
+        printer.println(`FECHA DE ATENCIÓN : ${body.hour_of_service}`);
         printer.println(printLines()); //----------------------------------
+        printer.table(["Cant", 'Nombre', 'Precio'])
+
+        body.details.forEach(function(el){
+            printer.table([el.quantity, el.product_name, el.total])
+        })
 
         printer.println(`SON: S/ ${body.total}`);
         printer.println(`SON: ${numeroALetras(body.total)}`);
