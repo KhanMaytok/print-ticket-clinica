@@ -171,7 +171,6 @@ app.post('/orthoray/', (req, res) => {
         body = JSON.parse(body);
     }
     let document_type = body.serie.startsWith('B') ? 'BOLETA ELECTRÓNICA': 'FACTURA ELECTRÓNICA';
-    let customer_document_name = body.serie.startsWith('B') ? 'DNI': 'RUC';
     printer.printImage(logo).then(function (done) {
         printer.println(" ")
         printer.println(" ")
