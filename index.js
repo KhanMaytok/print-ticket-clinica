@@ -193,7 +193,7 @@ app.post('/orthoray/', (req, res) => {
         printer.alignLeft();
         printer.println(`FECHA EMISION     : ${body.created_at}`);
         printer.println(`CLIENTE - DNI/RUC : ${body.customer.full_name}`);
-        printer.println(`FECHA DE ATENCIÓN : ${body.hour_of_service}`);
+        printer.println(`FECHA DE ATENCIÓN : ${body.details[0].hour_of_service}`);
         printer.println(printLines()); //----------------------------------
         printer.table(["Cant", 'Nombre', 'Precio'])
 
