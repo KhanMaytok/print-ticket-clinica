@@ -178,7 +178,7 @@ app.post('/orthoray/', (req, res) => {
         printer.bold(true)
         printer.println("ORTHORAY S.A.C.");
         printer.println("RUC: 20479797901");
-        printer.println("Telef: (074) 232280");
+        printer.println("Telef:     ");
         printer.println("Cel: 977985053");
         printer.println("Email: oraycdi@hotmail.com ");
         printer.bold(false)
@@ -201,7 +201,8 @@ app.post('/orthoray/', (req, res) => {
             printer.table([el.quantity, el.product_name, el.total])
         })
 
-        printer.println(`SON: S/ ${body.total}`);
+        printer.println(`IGV  : S/ ${body.igv}`);
+        printer.println(`TOTAL: S/ ${body.total}`);
         printer.println(`SON: ${numeroALetras(body.total)}`);
         printer.alignLeft();
 
