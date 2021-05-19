@@ -200,7 +200,7 @@ app.post('/orthoray/', (req, res) => {
         body.details.forEach(function(el){
             printer.table([el.quantity, el.product_name, el.total])
         })
-
+        printer.println(printLines()); //----------------------------------
         printer.println(`IGV      : S/ ${body.igv}`);
         printer.println(`SUBTOTAL : S/ ${body.igv}`);
         printer.println(`TOTAL    : S/ ${body.total}`);
