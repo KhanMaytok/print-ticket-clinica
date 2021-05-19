@@ -170,7 +170,7 @@ app.post('/orthoray/', (req, res) => {
     if (typeof (body) === "string") {
         body = JSON.parse(body);
     }
-    let document_type = body.serie.startsWith('B') ? 'BOLETA ELECTRÓNICA': 'FACTURA ELECTRÓNICA';
+    let document_type = body.serie.startsWith('B') ? 'BOLETA ELECTRONICA': 'FACTURA ELECTRONICA';
     printer.printImage(logo).then(function (done) {
         printer.println(" ")
         printer.println(" ")
