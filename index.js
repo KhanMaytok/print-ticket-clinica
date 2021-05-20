@@ -201,8 +201,12 @@ app.post('/orthoray/', (req, res) => {
             printer.table([el.quantity, el.product_name, el.total])
         })
         printer.println(printLines()); //----------------------------------
-        printer.println(`IGV      : S/ ${body.igv}`);
-        printer.println(`SUBTOTAL : S/ ${body.igv}`);
+
+        if(body.serie.startsWith('F')){
+            printer.println(`IGV      : S/ ${body.igv}`);
+            printer.println(`SUBTOTAL : S/ ${body.subtotal}`);
+        }
+
         printer.println(`TOTAL    : S/ ${body.total}`);
         printer.println(`SON: ${numeroALetras(body.total)}`);
         printer.alignLeft();
