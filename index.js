@@ -208,7 +208,7 @@ app.post('/money-transfer/', (req, res) => {
         printer.bold(false)
         printer.println(body.enterprise_address)
         printer.println(`PUNTO DE EMISIÓN: ${body.current_agency}`)
-        printer.println(`R.U.C. 20395419715`);
+        printer.println(`R.U.C. ${body.enterprise_ruc}`);
         printer.println(printLines());
 
         printer.println('GIRO - TRANSFERENCIA DE DINERO');
@@ -277,7 +277,7 @@ app.post('/encomiendas/', (req, res) => {
         printer.bold(false)
         printer.println(body.enterprise_address)
         printer.println(`PUNTO DE EMISIÓN: ${body.seller_agency}`)
-        printer.println(`R.U.C. 20395419715`);
+        printer.println(`R.U.C. ${body.enterprise_ruc}`);
         printer.println(printLines());
         let arrival = body.final_arrival === '' ? body.arrival : body.final_arrival;
 
