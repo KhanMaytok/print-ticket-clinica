@@ -204,9 +204,9 @@ app.post('/money-transfer/', (req, res) => {
         printer.println(" ")
         printer.alignCenter();
         printer.bold(true)
-        printer.println(`TOURS ANGEL DIVINO SAC`);
+        printer.println(body.enterprise_name);
         printer.bold(false)
-        printer.println(`Av. Jorge Chavez Nro. 1365`)
+        printer.println(body.enterprise_address)
         printer.println(`PUNTO DE EMISIÓN: ${body.current_agency}`)
         printer.println(`R.U.C. 20395419715`);
         printer.println(printLines());
