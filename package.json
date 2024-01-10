@@ -1,0 +1,19 @@
+{
+  "name": "print-ticket-clinica",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "node-thermal-printer": "^4.4.1",
+    "numbers2words": "^1.5.0",
+    "printer": "^0.4.0"
+  }
+}
