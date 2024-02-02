@@ -10,8 +10,8 @@ git fetch --all
 git reset --hard origin/master
 git pull origin master
 npm install printer --build-from-source --legacy-peer-deps
-call npm install -g nodemon
-call npm install
+npm install -g nodemon
+npm install
 
 echo " _______        _       _           _        _           _       "
 echo "|__   __|      | |     (_)         | |      | |         | |      "
