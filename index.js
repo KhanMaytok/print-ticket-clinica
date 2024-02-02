@@ -89,6 +89,7 @@ const formatNumber = (stringNumber) => {
     return `${greaterPart} SOLES ${lowerPart}`.toUpperCase();
 }
 
+
 app.post('/drugs/', async (req, res) => {
     try {
         console.log('imprimiendo medicamentos');
@@ -135,6 +136,50 @@ app.post('/drugs/', async (req, res) => {
     }
 })
 
+app.post('/drugs/10274247491/', async (req, res) => {
+    try {
+        console.log('imprimiendo medicamentos');
+        console.log(req.body);
+        let body = req.body;
+        if (typeof (body) === "string") {
+            body = JSON.parse(body);
+        }
+        printer.println(" ")
+        printer.println(" ")
+        printer.alignCenter();
+        printer.bold(true)
+        printer.println("BOTICA RODRIFARMA");
+        printer.bold(false)
+        printer.println("R.U.C. 10274247491");
+        printer.println(printLines());
+        printer.println(printLines()); //----------------------------------
+        printer.println(`TICKET DE VENTA`);
+        printer.println(printLines()); //----------------------------------
+        printer.setTextNormal();
+        printer.alignLeft();
+        printer.println(`FECHA EMISION: ${body.created_at}`);
+        printer.println(`DNI:            ${body.customer.dni}`);
+        printer.println(`NOMBRES:        ${body.customer.full_name}`);
+        printer.setTextNormal();
+        printer.println(printLines()); //----------------------------------
+        printer.table(["Cant", 'Nombre', 'Precio'])
+
+        body.details.forEach(function (el) {
+            printer.table([el.quantity, el.product_name, el.total])
+        })
+        printer.println(printLines()); //----------------------------------
+        printer.println(`TOTAL    : S/ ${body.total}`);
+        printer.println(`SON: ${formatNumber(body.total)}`);
+        printer.alignLeft();
+        printer.cut();
+
+        await printer.execute();
+        printer.clear();
+        res.json({ jeje: 'jeje' })
+    } catch (error) {
+        console.log(error);
+    }
+})
 
 app.post('/orthoray/', async (req, res) => {
     try {
