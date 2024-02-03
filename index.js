@@ -81,7 +81,7 @@ app.get('/', async (req, res) => {
 
 });
 
-app.get('/10274247491/', async (req, res) => {
+app.post('/10274247491/', async (req, res) => {
     console.log('imprimiendo requiest');
     console.log(req);
     let body = req.body;
@@ -121,7 +121,7 @@ app.get('/10274247491/', async (req, res) => {
 
 });
 
-app.get('/20605408941/', async (req, res) => { // SOMOS SALUD
+app.post('/20605408941/', async (req, res) => { // SOMOS SALUD
     console.log('imprimiendo requiest');
     console.log(req);
     let body = req.body;
