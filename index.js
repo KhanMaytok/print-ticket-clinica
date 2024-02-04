@@ -228,11 +228,14 @@ app.post('/drugs/10274247491/', async (req, res) => {
         }
 
         let document_type = 'TICKET DE ATENCIÓN';
+        let serie = '';
 
         if (body.serie.startsWith === 'B') {
             document_type = 'BOLETA ELECTRÓNICA';
+            serie = `${body.serie}-${body.number}`;
         } else if (body.serie.startsWith === 'F') {
             document_type = 'FACTURA ELECTRÓNICA';
+            serie = `${body.serie}-${body.number}`;
         }
 
         printer.println(" ")
@@ -245,6 +248,7 @@ app.post('/drugs/10274247491/', async (req, res) => {
         printer.println(printLines());
         printer.println(printLines()); //----------------------------------
         printer.println(document_type);
+        printer.println(serie);
         printer.println(printLines()); //----------------------------------
         printer.setTextNormal();
         printer.alignLeft();
@@ -282,11 +286,14 @@ app.post('/drugs/20605408941/', async (req, res) => {  // SOMOS SALUD
         }
 
         let document_type = 'TICKET DE ATENCIÓN';
+        let serie = '';
 
         if (body.serie.startsWith === 'B') {
             document_type = 'BOLETA ELECTRÓNICA';
+            serie = `${body.serie}-${body.number}`;
         } else if (body.serie.startsWith === 'F') {
             document_type = 'FACTURA ELECTRÓNICA';
+            serie = `${body.serie}-${body.number}`;
         }
 
         printer.println(" ")
@@ -299,6 +306,7 @@ app.post('/drugs/20605408941/', async (req, res) => {  // SOMOS SALUD
         printer.println(printLines());
         printer.println(printLines()); //----------------------------------
         printer.println(document_type);
+        printer.println(serie);
         printer.println(printLines()); //----------------------------------
         printer.setTextNormal();
         printer.alignLeft();
