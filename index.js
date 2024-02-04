@@ -89,6 +89,8 @@ app.post('/10274247491/', async (req, res) => {
         body = JSON.parse(body);
     }
 
+    let document_type = 'TICKET DE ATENCIÓN';
+
     printer.println(" ")
     printer.println(" ")
     printer.alignCenter();
@@ -97,7 +99,7 @@ app.post('/10274247491/', async (req, res) => {
     printer.bold(false)
     printer.println("R.U.C. 10274247491");
     printer.println(printLines()); //----------------------------------
-    printer.println(`TICKET DE ATENCIÓN`);
+    printer.println(document_type);
     printer.println(printLines()); //----------------------------------
     printer.setTextNormal();
     printer.alignLeft();
@@ -224,6 +226,15 @@ app.post('/drugs/10274247491/', async (req, res) => {
         if (typeof (body) === "string") {
             body = JSON.parse(body);
         }
+
+        let document_type = 'TICKET DE ATENCIÓN';
+
+        if (body.serie.startsWith === 'B') {
+            document_type = 'BOLETA ELECTRÓNICA';
+        } else if (body.serie.startsWith === 'F') {
+            document_type = 'FACTURA ELECTRÓNICA';
+        }
+
         printer.println(" ")
         printer.println(" ")
         printer.alignCenter();
@@ -233,7 +244,7 @@ app.post('/drugs/10274247491/', async (req, res) => {
         printer.println("R.U.C. 10274247491");
         printer.println(printLines());
         printer.println(printLines()); //----------------------------------
-        printer.println(`TICKET DE VENTA`);
+        printer.println(document_type);
         printer.println(printLines()); //----------------------------------
         printer.setTextNormal();
         printer.alignLeft();
@@ -269,6 +280,15 @@ app.post('/drugs/20605408941/', async (req, res) => {  // SOMOS SALUD
         if (typeof (body) === "string") {
             body = JSON.parse(body);
         }
+
+        let document_type = 'TICKET DE ATENCIÓN';
+
+        if (body.serie.startsWith === 'B') {
+            document_type = 'BOLETA ELECTRÓNICA';
+        } else if (body.serie.startsWith === 'F') {
+            document_type = 'FACTURA ELECTRÓNICA';
+        }
+
         printer.println(" ")
         printer.println(" ")
         printer.alignCenter();
@@ -278,7 +298,7 @@ app.post('/drugs/20605408941/', async (req, res) => {  // SOMOS SALUD
         printer.println("R.U.C. 20605408941");
         printer.println(printLines());
         printer.println(printLines()); //----------------------------------
-        printer.println(`TICKET DE VENTA`);
+        printer.println(document_type);
         printer.println(printLines()); //----------------------------------
         printer.setTextNormal();
         printer.alignLeft();
