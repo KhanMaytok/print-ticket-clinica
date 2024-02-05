@@ -230,11 +230,11 @@ app.post('/drugs/20612133671/', async (req, res) => { // PEREZ IDROGO RODRIFARMA
         let document_type = 'TICKET DE ATENCIÓN';
         let serie = '';
 
-        if (body.serie.startsWith === 'B') {
+        if (body.serie.startsWith('B') === true) {
             document_type = 'BOLETA ELECTRÓNICA';
             console.log('ES BOLETA');
             serie = `${body.serie}-${body.number}`;
-        } else if (body.serie.startsWith === 'F') {
+        } else if (body.serie.startsWith('F') === true) {
             document_type = 'FACTURA ELECTRÓNICA';
             serie = `${body.serie}-${body.number}`;
             console.log('ES FACTURA');
