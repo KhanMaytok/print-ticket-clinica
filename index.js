@@ -97,7 +97,7 @@ app.post('/20612133671/', async (req, res) => { // PEREZ IDROGO RODRIFARMA
     printer.bold(true)
     printer.println("BOTICA RODRIFARMA");
     printer.bold(false)
-    printer.println("R.U.C. 10274247491");
+    printer.println("R.U.C. 20612133671");
     printer.println(printLines()); //----------------------------------
     printer.println(document_type);
     printer.println(printLines()); //----------------------------------
@@ -244,7 +244,7 @@ app.post('/drugs/20612133671/', async (req, res) => { // PEREZ IDROGO RODRIFARMA
         printer.bold(true)
         printer.println("BOTICA RODRIFARMA");
         printer.bold(false)
-        printer.println("R.U.C. 10274247491");
+        printer.println("R.U.C. 20612133671");
         printer.println(printLines());
         printer.println(printLines()); //----------------------------------
         printer.println(document_type);
