@@ -81,7 +81,7 @@ app.get('/', async (req, res) => {
 
 });
 
-app.post('/10274247491/', async (req, res) => {
+app.post('/20612133671/', async (req, res) => { // PEREZ IDROGO RODRIFARMA
     console.log('imprimiendo requiest');
     console.log(req);
     let body = req.body;
@@ -218,7 +218,7 @@ app.post('/drugs/', async (req, res) => {
     }
 })
 
-app.post('/drugs/10274247491/', async (req, res) => {
+app.post('/drugs/20612133671/', async (req, res) => { // PEREZ IDROGO RODRIFARMA
     try {
         console.log('imprimiendo medicamentos');
         console.log(req.body);
