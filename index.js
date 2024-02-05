@@ -232,10 +232,12 @@ app.post('/drugs/20612133671/', async (req, res) => { // PEREZ IDROGO RODRIFARMA
 
         if (body.serie.startsWith === 'B') {
             document_type = 'BOLETA ELECTRÓNICA';
+            console.log('ES BOLETA');
             serie = `${body.serie}-${body.number}`;
         } else if (body.serie.startsWith === 'F') {
             document_type = 'FACTURA ELECTRÓNICA';
             serie = `${body.serie}-${body.number}`;
+            console.log('ES FACTURA');
         }
 
         printer.println(" ")
