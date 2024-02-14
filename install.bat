@@ -14,11 +14,11 @@ git reset --hard origin/master
 echo "Trayendo cambios..."
 git pull origin master
 echo "Instalando printer..."
-npm install printer --build-from-source --legacy-peer-deps
+call npm install printer --build-from-source --legacy-peer-deps
 echo "Instalando nodemon..."
-npm install -g nodemon
+call npm install -g nodemon
 echo "Instalando dependencias..."
-npm install
+call npm install
 
 echo " _______        _       _           _        _           _       "
 echo "|__   __|      | |     (_)         | |      | |         | |      "
