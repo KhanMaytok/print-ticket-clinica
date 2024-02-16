@@ -220,7 +220,7 @@ app.post('/drugs/', async (req, res) => {
 
 app.post('/drugs/20612133671/', async (req, res) => { // PEREZ IDROGO RODRIFARMA
     try {
-        console.log('imprimiendo medicamentos');
+        console.log('imprimiendo para RODRIMED EIRL');
         console.log(req.body);
         let body = req.body;
         if (typeof (body) === "string") {
@@ -244,7 +244,7 @@ app.post('/drugs/20612133671/', async (req, res) => { // PEREZ IDROGO RODRIFARMA
         printer.println(" ")
         printer.alignCenter();
         printer.bold(true)
-        printer.println("BOTICA RODRIFARMA");
+        printer.println("RODRIMED EIRL");
         printer.bold(false)
         printer.println("R.U.C. 20612133671");
         printer.println(printLines());
@@ -397,6 +397,120 @@ app.post('/orthoray/', async (req, res) => {
 })
 
 app.post('/laboratory/', async (req, res) => {
+    try {
+        console.log('imprimiendo requiest');
+        console.log(req.body);
+        let body = req.body;
+        if (typeof (body) === "string") {
+            body = JSON.parse(body);
+        }
+
+        printer.println(" ")
+        printer.println(" ")
+        printer.alignCenter();
+        printer.bold(true)
+        printer.println("TOTAL MEDIC");
+        printer.bold(false)
+        printer.println("ANTISUYO 1385 - LA VICTORIA - CHICLAYO")
+        printer.println("R.U.C. 20605502823");
+        printer.println(printLines());
+        printer.println(printLines()); //----------------------------------
+        printer.println(`TICKET DE ATENCIÓN`);
+        printer.println(printLines()); //----------------------------------
+        printer.setTextNormal();
+        printer.alignLeft();
+        printer.println(`FECHA EMISION: ${body.created_at}`);
+
+        printer.println(`DNI:            ${body.dni}`);
+        printer.println(`NOMBRES:        ${body.person}`);
+        printer.println(`ESPECIALIDAD:   ${body.specialty}`);
+        printer.println(`PROFESIONAL:    ${body.doctor}`);
+
+        printer.println(printLines()); //----------------------------------
+
+        body.analysis_details.forEach(el => {
+            printer.println(`NOMBRE: ${el.name}`);
+            printer.println(`PRECIO: S/ ${el.price.toFixed(2)}`);
+        })
+
+        printer.println(printLines()); //----------------------------------
+
+        printer.println(`SON: S/ ${body.price}`);
+        printer.println(`SON: ${numeroALetras(body.price)}`);
+        printer.alignLeft();
+
+        //printer.printQR(`${body.ticket_id}`)
+
+        if (client_data.client_data.print_bottom === true) {
+            printer.println(client_data.client_data.bottom_text)
+        }
+        printer.partialCut();
+        await printer.execute();
+        printer.clear();
+        res.send('<h1>UNO SAN</h1>')
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+app.post('/laboratory/20612133671/', async (req, res) => { // PEREZ IDROGO RODRIFARMA
+    try {
+        console.log('imprimiendo requiest');
+        console.log(req.body);
+        let body = req.body;
+        if (typeof (body) === "string") {
+            body = JSON.parse(body);
+        }
+
+        printer.println(" ")
+        printer.println(" ")
+        printer.alignCenter();
+        printer.bold(true)
+        printer.println("TOTAL MEDIC");
+        printer.bold(false)
+        printer.println("ANTISUYO 1385 - LA VICTORIA - CHICLAYO")
+        printer.println("R.U.C. 20605502823");
+        printer.println(printLines());
+        printer.println(printLines()); //----------------------------------
+        printer.println(`TICKET DE ATENCIÓN`);
+        printer.println(printLines()); //----------------------------------
+        printer.setTextNormal();
+        printer.alignLeft();
+        printer.println(`FECHA EMISION: ${body.created_at}`);
+
+        printer.println(`DNI:            ${body.dni}`);
+        printer.println(`NOMBRES:        ${body.person}`);
+        printer.println(`ESPECIALIDAD:   ${body.specialty}`);
+        printer.println(`PROFESIONAL:    ${body.doctor}`);
+
+        printer.println(printLines()); //----------------------------------
+
+        body.analysis_details.forEach(el => {
+            printer.println(`NOMBRE: ${el.name}`);
+            printer.println(`PRECIO: S/ ${el.price.toFixed(2)}`);
+        })
+
+        printer.println(printLines()); //----------------------------------
+
+        printer.println(`SON: S/ ${body.price}`);
+        printer.println(`SON: ${numeroALetras(body.price)}`);
+        printer.alignLeft();
+
+        //printer.printQR(`${body.ticket_id}`)
+
+        if (client_data.client_data.print_bottom === true) {
+            printer.println(client_data.client_data.bottom_text)
+        }
+        printer.partialCut();
+        await printer.execute();
+        printer.clear();
+        res.send('<h1>UNO SAN</h1>')
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+app.post('/laboratory/20605408941/', async (req, res) => { // SOMOS SALUD
     try {
         console.log('imprimiendo requiest');
         console.log(req.body);
