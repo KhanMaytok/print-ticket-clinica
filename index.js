@@ -227,7 +227,7 @@ app.post('/drugs/20612133671/', async (req, res) => { // PEREZ IDROGO RODRIFARMA
             body = JSON.parse(body);
         }
 
-        let document_type = 'TICKET DE ATENCIÓN';
+        let document_type = 'NOTA DE VENTA';
         let serie = '';
 
         if (body.serie.startsWith('B') === true) {
@@ -287,7 +287,7 @@ app.post('/drugs/20605408941/', async (req, res) => {  // SOMOS SALUD
             body = JSON.parse(body);
         }
 
-        let document_type = 'TICKET DE VENTA';
+        let document_type = 'NOTA DE VENTA';
         let serie = '';
 
         if (body.serie.startsWith('B') === true) {
