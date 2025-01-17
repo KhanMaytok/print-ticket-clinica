@@ -51,7 +51,7 @@ app.get('/', async (req, res) => {
     printer.println(" ")
     printer.alignCenter();
     printer.bold(true)
-    printer.println("TOTAL MEDIC");
+    printer.println("MUNDO SALUD");
     printer.bold(false)
     printer.println("ANTISUYO 1385 - LA VICTORIA - CHICLAYO")
     printer.println("R.U.C. 20605502823");
@@ -184,7 +184,7 @@ app.post('/drugs/', async (req, res) => {
         printer.println(" ")
         printer.alignCenter();
         printer.bold(true)
-        printer.println("TOTAL MEDIC");
+        printer.println("MUNDO SALUD");
         printer.bold(false)
         printer.println("ANTISUYO 1385 - LA VICTORIA - CHICLAYO")
         printer.println("R.U.C. 20605502823");
